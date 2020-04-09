@@ -31,3 +31,10 @@ Route::POST('student-password/reset/{token}','Student\ResetPasswordController@sh
 Route::GET('student/register','Student\RegisterController@showRegistrationForm')->name('student.register');
 Route::POST('student/register','Student\RegisterController@register');
 
+
+
+//social api
+Route::get('login/{service}', 'Auth\LoginController@redirectToProvider')->name('fb');
+Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+
+

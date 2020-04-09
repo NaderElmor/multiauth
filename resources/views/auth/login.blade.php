@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4" style="margin-bottom: 20px">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -64,6 +64,13 @@
                                 @endif
                             </div>
                         </div>
+                        <div class='text-center' >
+                            <a href="login/facebook" class="btn btn-primary"><i class="fab fa-facebook"></i>  Sign in with Facebook</a>
+                            <a href="login/google" class="btn btn-danger"><i class="fab fa-google"></i> Login with Google</a>
+                            <a href="login/github" class="btn btn-secondary"><i class="fab fa-github"></i> Login with Github</a>
+                        </div>
+                   
+                        
                     </form>
                 </div>
             </div>

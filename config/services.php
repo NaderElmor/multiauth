@@ -34,4 +34,23 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '217775682858002',
+        'client_secret' => '769d301b1545c6ecceaa38b5e12a58d5',
+        'redirect' => 'http://localhost:8000/login/facebook/callback',
+    ],
+
+
+    'google' => [
+        'client_id' => '217775682858002',
+        'client_secret' => '769d301b1545c6ecceaa38b5e12a58d5',
+        'redirect' => 'http://localhost:8000/login/google/callback',
+    ],
+
+    'github' => [
+        'client_id' => '6544c208c9fc638f3252',
+        'client_secret' => '7d12a82c541268b762250281ad463e668ab4cc6f',
+        'redirect' => 'http://localhost:8000/login/github/callback',
+    ],
+
 ];
