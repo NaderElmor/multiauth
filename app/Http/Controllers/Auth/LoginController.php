@@ -60,24 +60,39 @@ class LoginController extends Controller
      */
     public function handleProviderCallback($service)
     {
-        $user = Socialite::driver($service)->user();
+        $user = Socialite::driver($service)->stateless()->user();
 
-        $findUser = User::where('email', $user->getEmail());
+        $findUser = User::where('email', $user->getEmail())->first();
 
+        //if this email exist
         if($findUser){
-            Auth::login($findUser);
-        }else{
+             Auth::login($findUser);   
+        }else{ 
+            if($service == 'github'){
+                $newUser = User::create([
+                    'name'         => $user->getNickname(),
+                    'email'        => $user->getEmail(),
+                    'avatar'       => $user->getAvatar(),
+                    'providername' => $service
+                    ]);
+                    $newUser->save();
 
-        $newUser = new User;
-        $newUser->name = $user->getName();
-        $newUser->email = $user->getEmail();
-        $newUser->password = bcrypt('11111111');
-        $newUser->save();
+            } 
+            if($service == 'facebook'){
+                $newUser = User::create([
+                    'name'         => $user->getName(),
+                    'email'        => $user->getEmail(),
+                    'avatar'       => $user->getAvatar(),
+                    'providername' => $service
+                    ]);
+                    $newUser->save();
+
+            }
+           
+      
         Auth::login($newUser);
-
         }
-
-        
          return redirect('home');
-    }
+      
+}
 }
